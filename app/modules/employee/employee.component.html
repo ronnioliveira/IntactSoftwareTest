@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="col-sm-4 col-sd-4 col-xs-4">
+        <form>
+            <div *ngFor="let e of employee">
+                <h3>{{e.title}}</h3>
+                <div class="form-group" *ngFor="let l of e.elementList">
+                    <div *ngIf="findStringInElementTemplate(l.template,'/text>')">
+                        <input type="text" class="form-control" value="{{l.value}}">
+                        <label for="{{l.name}}">{{l.label | uppercase}}</label>
+                    </div>
+                    <div *ngIf="findStringInElementTemplate(l.template,'/eldate>')">
+                        <input type="date" class="form-control" value="{{getFormattedDate(l.value)}}">
+                        <label for="birthday">{{l.label | uppercase}}</label>
+                    </div>
+                    <div *ngIf="findStringInElementTemplate(l.template,'/command>')">
+                        <button type="submit" class="btn btn-light">{{l.text | uppercase}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
